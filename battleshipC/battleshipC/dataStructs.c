@@ -12,5 +12,5 @@ struct Ship {
 
 struct Player {
 	struct Ship* ships;
-	char** playerTable;
+	char*** playerTable;
 };
