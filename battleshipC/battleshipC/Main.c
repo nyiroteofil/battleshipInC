@@ -1,5 +1,8 @@
 #include <stdio.h>
-#include "battleshipFunctions.c";
+#include <conio.h>
+
+#include "battleshipFunctions.c"
+#include "dataStructs.c"
 
 int main() {
 
