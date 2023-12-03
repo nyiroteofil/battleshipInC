@@ -1,3 +1,6 @@
+#ifndef DATASTRUCTURES_H
+#define DATASTRUCTURES_H
+
 struct Field {
 	int x;
 	int y;
@@ -12,5 +15,7 @@ struct Ship {
 
 struct Player {
 	struct Ship* ships;
-	char*** playerTable;
+	char** playerTable;
 };
+
+#endif

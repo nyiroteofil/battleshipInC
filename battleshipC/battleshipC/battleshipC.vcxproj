@@ -127,8 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="battleshipFunctions.c" />
-    <ClCompile Include="dataStructs.c" />
+    <ClCompile Include="battleshipFunctions.h" />
+    <ClCompile Include="dataStructures.H" />
     <ClCompile Include="Main.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -18,10 +18,10 @@
     <ClCompile Include="Main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="battleshipFunctions.c">
+    <ClCompile Include="battleshipFunctions.h">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="dataStructs.c">
+    <ClCompile Include="dataStructures.H">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

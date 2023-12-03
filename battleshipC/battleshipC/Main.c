@@ -1,15 +1,20 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>
 
-#include "battleshipFunctions.c"
-#include "dataStructs.c"
+typedef struct Player Player;
+typedef struct Ship Ship;
+typedef struct Field Field;
+
+#include "battleshipFunctions.h"
+#include "dataStructures.H"
 
 int main() {
-	struct Player playerInstance;
-	InitializePlayer(8, 5, &playerInstance);
-	uptdatePlayerTable(&playerInstance, 5);
-	RenderPlayerTable(&playerInstance, 8);
+
+	Player player1, player2;
+	InitializePlayers(&player1, 8, 5);
 
 	return 0;
 }
