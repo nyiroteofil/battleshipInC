@@ -21,6 +21,31 @@ char** AllocateCharMatrix(int sizeX, int sizeY) {
 	return matrix;
 }
 
+int isShipValid(int x, int y, int ori, int size, int dim, Ship* ships) {
+	if (ori != 2 || x > 0 || x + (size - 1) > dim || y < 0 && ori != 2 && x > 0 && x + (size - 1) > dim && y < 0) // Continue from here
+}
+
+Ship* getShips(int numS, int dim) {
+	Ship* shipArray = (Ship*)malloc(sizeof(Ship) * numS);
+
+	for (int i = numS; i > 0; i--) {
+		Ship shipInsatance;
+
+		int x, y, orientation;
+
+		do
+		{
+			printf("Orientation of the ships (1: vertical | 2: horizontal): ");
+			scanf("%D", &orientation);
+			printf("X starting coordinate: ");
+			scanf("%d", &x);
+			printf("Y starting coordinate", &y);
+
+
+		} while ();
+	}
+}
+
 void InitializePlayers(Player* player1, int dimension, int numOfShips) {
 	player1->playerTable = AllocateCharMatrix(dimension, dimension);
 
