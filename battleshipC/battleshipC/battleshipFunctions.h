@@ -21,11 +21,51 @@ char** AllocateCharMatrix(int sizeX, int sizeY) {
 	return matrix;
 }
 
-int isShipValid(int x, int y, int ori, int size, int dim, Ship* ships) {
-	if (ori != 2 || x > 0 || x + (size - 1) > dim || y < 0 && ori != 2 && x > 0 && x + (size - 1) > dim && y < 0) // Continue from here
+int isShipValid(int x, int y, int ori, int size, int dim) {
+	if (ori == 1) {
+		if (y + size <= dim && y > 0 && x <= dim && x > 0) return 1;
+	}
+	else if (ori == 2) {
+		if (y <= dim && y > 0 && x + size <= dim && x > 0) return 1;
+	}
+
+	return 0;
 }
 
-Ship* getShips(int numS, int dim) {
+int willShipCollide(int x, int y, int size, int ori, Ship* ships) {
+	Field* shipsFields = getShipsFields(x, y, size, ori);
+	for (int i = 0; i < size; i++) {
+		for (int j )  // folyt. köv.
+	}
+}
+
+Field* getShipsFields(int starterX, int starterY, int size, int orientation) {
+	Field* fields = (Field*)malloc(sizeof(Field) * size);
+	if (orientation == 1) {
+		for (int i = 0; i < size; i++) {
+			Field fieldInstance;
+			fieldInstance.x = starterX;
+			fieldInstance.y = starterY + i;
+			fields[i] = fieldInstance;
+		}
+
+		return fields;
+	}
+	else if (orientation == 2) {
+		for (int i = 0; i < size; i++) {
+			Field fieldInstance;
+			fieldInstance.x = starterX + i;
+			fieldInstance.y = starterY;
+			fields[i] = fieldInstance;
+		}
+
+		return fields;
+	}
+
+	return fields;
+}
+
+Ship* getShips(int numS, int dim, int maxLength) {
 	Ship* shipArray = (Ship*)malloc(sizeof(Ship) * numS);
 
 	for (int i = numS; i > 0; i--) {
