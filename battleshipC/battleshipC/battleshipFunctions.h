@@ -1,5 +1,6 @@
 #ifndef BATTLESIHIPFUNCTIONS_H
 #define BATTLESIPFUNCTIONS_H
+#define _CRT_SECURE_NO_WARNINGS
 
 #include <stdio.h>
 #include <string.h>
@@ -29,15 +30,10 @@ int isShipValid(int x, int y, int ori, int size, int dim) {
 		if (y <= dim && y > 0 && x + size <= dim && x > 0) return 1;
 	}
 
+	printf("!!! Invalid ship placement: Invalid Coordinates !!!\n\n");
 	return 0;
 }
 
-int willShipCollide(int x, int y, int size, int ori, Ship* ships) {
-	Field* shipsFields = getShipsFields(x, y, size, ori);
-	for (int i = 0; i < size; i++) {
-		for (int j )  // folyt. köv.
-	}
-}
 
 Field* getShipsFields(int starterX, int starterY, int size, int orientation) {
 	Field* fields = (Field*)malloc(sizeof(Field) * size);
@@ -46,6 +42,7 @@ Field* getShipsFields(int starterX, int starterY, int size, int orientation) {
 			Field fieldInstance;
 			fieldInstance.x = starterX;
 			fieldInstance.y = starterY + i;
+			fieldInstance.state = 1;
 			fields[i] = fieldInstance;
 		}
 
@@ -65,25 +62,59 @@ Field* getShipsFields(int starterX, int starterY, int size, int orientation) {
 	return fields;
 }
 
-Ship* getShips(int numS, int dim, int maxLength) {
+int willShipCollide(int x, int y, int size, int ori, Ship* ships) {
+	Field* shipsFields = getShipsFields(x, y, size, ori);
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < ships[i].size; j++) {
+
+			int k = 0;
+			while (k < size && (ships[i].occupiedFields[j].x == shipsFields[k].x && ships[i].occupiedFields[j].y != shipsFields[k].y ||
+				ships[i].occupiedFields[j].x != shipsFields[k].x && ships[i].occupiedFields[j].y == shipsFields[k].y ||
+				ships[i].occupiedFields[j].x != shipsFields[k].x && ships[i].occupiedFields[j].y != shipsFields[k].y)) {
+				k++;
+			}
+
+			if (k < size) {
+				printf("!!! Invalid ship placement: Ship Collison !!!\n\n");
+				return 1;
+			}
+
+		}
+	}
+
+	return 0;
+}
+
+
+Ship* getShips(int numS, int dim) {
 	Ship* shipArray = (Ship*)malloc(sizeof(Ship) * numS);
 
-	for (int i = numS; i > 0; i--) {
-		Ship shipInsatance;
+	for (int i = 1; i <= numS; i++) {
+		Ship shipInstance;
 
 		int x, y, orientation;
 
 		do
 		{
-			printf("Orientation of the ships (1: vertical | 2: horizontal): ");
-			scanf("%D", &orientation);
-			printf("X starting coordinate: ");
-			scanf("%d", &x);
-			printf("Y starting coordinate", &y);
+			printf("PLACEING %d LONG SHIP\n", i);
+			do
+			{
+				printf("\tOrientation of the ships (1: vertical | 2: horizontal): ");
+				scanf_s("%d", &orientation);
+			} while (orientation != 1 && orientation != 2);
 
+			printf("\tX starting coordinate: ");
+			scanf_s("%d", &x);
+			printf("\tY starting coordinate: ");
+			scanf_s("%d", &y);
+			printf("\n");
+		} while (!isShipValid(x, y, orientation, i, dim) || willShipCollide(x, y, i, orientation, shipArray));
 
-		} while ();
+		shipInstance.occupiedFields = getShipsFields(x, y, i, orientation);
+
 	}
+
+	return shipArray;
 }
 
 void InitializePlayers(Player* player1, int dimension, int numOfShips) {
@@ -94,6 +125,7 @@ void InitializePlayers(Player* player1, int dimension, int numOfShips) {
 			player1->playerTable[i][j] = '#';
 		}
 	}
-}
 
+	player1->ships = getShips(numOfShips, dimension);
+}
 #endif
