@@ -18,11 +18,16 @@
     <ClCompile Include="Main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="battleshipFunctions.h">
+    <ClCompile Include="playerInit.h">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="dataStructures.H">
+    <ClCompile Include="dataStructures.h">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="utilityFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
