@@ -101,7 +101,7 @@ void getShips(int numS, int dim, Player* player) {
 
 		int x, y, orientation;
 
-		renderPlayerMap(player, dim);
+		renderMap(player->playerTable, dim);
 
 		do {
 
@@ -132,16 +132,18 @@ void getShips(int numS, int dim, Player* player) {
 		shipInstance.state = 1;
 		player->ships[i - 1] = shipInstance;
 
-		updatePlayerTable(player, i);
+		updatePlayerTable(player);
 	}
 }
 
 void InitializePlayers(Player* player1, int dimension, int numOfShips) {
 	player1->playerTable = AllocateCharMatrix(dimension, dimension);
+	player1->hitMap = AllocateCharMatrix(dimension, dimension);
 
 	for (int i = 0; i < dimension; i++) {
 		for (int j = 0; j < dimension; j++) {
 			player1->playerTable[i][j] = '*';
+			player1->hitMap[i][j] = '?';
 		}
 	}
 

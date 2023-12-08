@@ -14,8 +14,15 @@ struct Ship {
 };
 
 struct Player {
+	int numberOfShips;
 	struct Ship* ships;
 	char** playerTable;
+	char** hitMap;
+};
+
+struct Settings {
+	int dimensions;
+	int maxNumberOfShips;
 };
 
 #endif
