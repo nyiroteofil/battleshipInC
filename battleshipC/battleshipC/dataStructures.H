@@ -14,7 +14,6 @@ struct Ship {
 };
 
 struct Player {
-	char name[25];
 	int numberOfShips;
 	struct Ship* ships;
 	char** playerTable;
