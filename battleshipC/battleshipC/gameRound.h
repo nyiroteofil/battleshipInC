@@ -52,6 +52,7 @@ int didShotHit(Player* reciver, int x, int y) {
 
 void fire(Player* attacker, Player* reciver, int dim) {
 	system("cls");
+	Sleep(2500);
 	printf("Player: %s\n", attacker->name);
 	renderMap(attacker->playerTable, dim);
 	renderMap(attacker->hitMap, dim);
@@ -76,11 +77,9 @@ void fire(Player* attacker, Player* reciver, int dim) {
 		attacker->hitMap[x][y] = 'X';
 
 		printf("Enemy ship hit!\n");
-		if (shipState == 2) {
+		if (shipState == 3) {
 			printf("Ship have been sunk!\n");
 		}
-
-		Sleep(2500);
 
 		fire(attacker, reciver, dim);
 	}

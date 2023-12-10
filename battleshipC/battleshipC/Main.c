@@ -42,6 +42,7 @@ int main() {
 
 
 	printf("%s WON!!!", players[0].name);
+	Sleep(10000);
 
 	//freeing the allocated memory
 	freeCharMatrix(players[0].hitMap, gameDimensions, gameDimensions);
