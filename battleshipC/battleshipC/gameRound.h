@@ -80,7 +80,7 @@ void fire(Player* attacker, Player* reciver, int dim) {
 			printf("Ship have been sunk!\n");
 		}
 
-		Sleep(5000);
+		Sleep(2500);
 
 		fire(attacker, reciver, dim);
 	}

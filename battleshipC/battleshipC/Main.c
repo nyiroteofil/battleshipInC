@@ -15,9 +15,9 @@ int main() {
 
 	do {
 		printf("Playing field size(N x N): ");
-		scanf_s("% d", &gameDimensions);
+		scanf_s("%d", &gameDimensions);
 		printf("Max size of the ships: ");
-		scanf_s("% d", &numberOfShips);
+		scanf_s("%d", &numberOfShips);
 		system("cls");
 	} while (gameDimensions > 99 || gameDimensions > 15 || numberOfShips > (int)((double)gameDimensions * 0.7));
 

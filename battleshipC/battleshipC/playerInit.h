@@ -78,9 +78,11 @@ int willShipCollide(int x, int y, int size, int ori, Ship* ships) {
 void getShips(int dim, Player* player) {
 	player->ships = (Ship*)malloc(sizeof(Ship) * player->numberOfShips);
 	for (int i = 1; i <= player->numberOfShips; i++) {
+
 		system("cls");
 		int x, y, orientation;
 
+		printf("Player: %s\n\n", player->name);
 		renderMap(player->playerTable, dim);
 
 		do {
