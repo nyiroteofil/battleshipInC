@@ -4,7 +4,7 @@ typedef struct Player Player;
 typedef struct Ship Ship;
 typedef struct Field Field;
 
-#include "playerInit.h""
+#include "playerInit.h"
 #include "dataStructures.H"
 #include "utilityFunctions.h"
 #include "gameRound.h"
