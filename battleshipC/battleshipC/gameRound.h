@@ -52,7 +52,6 @@ int didShotHit(Player* reciver, int x, int y) {
 
 void fire(Player* attacker, Player* reciver, int dim) {
 	system("cls");
-	Sleep(2500);
 	printf("Player: %s\n", attacker->name);
 	renderMap(attacker->playerTable, dim);
 	renderMap(attacker->hitMap, dim);
@@ -69,7 +68,7 @@ void fire(Player* attacker, Player* reciver, int dim) {
 		x -= 1;
 		y -= 1;
 
-		if (x > dim - 1 && x < -1 && y > dim - 1 && y < -1) printf("\n!! Invalid Coordinates !!\n");
+		if (x >= dim || x < -1 || y >= dim || y < -1) printf("\n\n!! Invalid Coordinates !!\n");
 	} while (x >= dim || x < -1 || y >= dim || y < -1);
 
 	int shipState = didShotHit(reciver, x, y);
@@ -77,9 +76,11 @@ void fire(Player* attacker, Player* reciver, int dim) {
 		attacker->hitMap[x][y] = 'X';
 
 		printf("Enemy ship hit!\n");
-		if (shipState == 3) {
+		if (shipState == 2) {
 			printf("Ship have been sunk!\n");
 		}
+
+		Sleep(2000);
 
 		fire(attacker, reciver, dim);
 	}
