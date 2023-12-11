@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
 #include <windows.h>
 
 #include "dataStructures.h"
@@ -87,6 +88,10 @@ void fire(Player* attacker, Player* reciver, int dim) {
 	else {
 		attacker->hitMap[x][y] = 'O';
 		printf("shot missed!\n");
+		getchar(); // first get shar will read the leftover \n character from scanaf()
+		printf("Please press [ENTER] to continue");
+		getchar();
+		system("cls");
 		Sleep(5000);
 	}
 }

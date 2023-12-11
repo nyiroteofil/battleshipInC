@@ -34,7 +34,18 @@ void renderMap(char** map, int dim) {
 			if (dim < 10) {
 				for (int j = 0; j < dim; j++) {
 					if (j == 0) printf("%d  ", i + 1);
-					printf(" %c", map[i][j]);
+					if (map[i][j] == 'X') {
+						printf("\033[31;1m %c\033[0m", map[i][j]);
+					}
+					else if (map[i][j] == 'O') {
+						printf("\033[90;1m %c\033[0m", map[i][j]);
+					}
+					else if (map[i][j] == 'H') {
+						printf("\033[37;1m %c\033[0m", map[i][j]);
+					}
+					else {
+						printf("\033[36;1m %c\033[0m", map[i][j]);
+					}
 				}
 			}
 			else {
@@ -44,7 +55,18 @@ void renderMap(char** map, int dim) {
 						printf("%d ", i + 1);
 						if (i < 9) printf(" ");
 					}
-					printf("  %c", map[i][j]);
+					if (map[i][j] == 'X') {
+						printf("\033[31;1m %c\033[0m", map[i][j]);
+					}
+					else if (map[i][j] == 'O') {
+						printf("\033[90;1m %c\033[0m", map[i][j]);
+					}
+					else if (map[i][j] == 'H') {
+						printf("\033[37;1m %c\033[0m", map[i][j]);
+					}
+					else {
+						printf("\033[36;1m %c\033[0m", map[i][j]);
+					}
 				}
 
 			}
@@ -70,7 +92,18 @@ void renderMap(char** map, int dim) {
 			if (dim < 10) {
 				for (int j = 0; j < dim; j++) {
 					if (j == 0) printf("%d  ", i + 1);
-					printf(" %c", map[i][j]);
+					if (map[i][j] == 'X') {
+						printf("\033[31;1m %c\033[0m", map[i][j]);
+					}
+					else if (map[i][j] == 'O') {
+						printf("\033[90;1m %c\033[0m", map[i][j]);
+					}
+					else if (map[i][j] == 'H') {
+						printf("\033[37;1m %c\033[0m", map[i][j]);
+					}
+					else {
+						printf("\033[36;1m %c\033[0m", map[i][j]);
+					}
 				}
 			}
 			else {
@@ -80,7 +113,18 @@ void renderMap(char** map, int dim) {
 						printf("%d ", i + 1);
 						if (i < 9) printf(" ");
 					}
-					printf(" %c", map[i][j]);
+					if (map[i][j] == 'X') {
+						printf("\033[31;1m %c\033[0m", map[i][j]);
+					}
+					else if (map[i][j] == 'O') {
+						printf("\033[90;1m %c\033[0m", map[i][j]);
+					}
+					else if (map[i][j] == 'H') {
+						printf("\033[37;1m %c\033[0m", map[i][j]);
+					}
+					else {
+						printf("\033[36;1m %c\033[0m", map[i][j]);
+					}
 				}
 
 			}
