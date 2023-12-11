@@ -22,7 +22,7 @@ int main() {
 		printf("Max size of the ships: ");
 		scanf_s("%d", &GameSettings.maxNumberOfShips);
 		system("cls");
-	} while (GameSettings.dimensions < 5 || GameSettings.dimensions > 15 || GameSettings.maxNumberOfShips > (int)((double)GameSettings.dimensions * 0.7));
+	} while (/*GameSettings.dimensions < 5 ||*/ GameSettings.dimensions > 15 || GameSettings.maxNumberOfShips > (int)((double)GameSettings.dimensions * 0.7));
 	// Initializing the two players and their ships 
 	Player players[2];
 	Player player1, player2;
