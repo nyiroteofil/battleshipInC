@@ -6,6 +6,7 @@
 #include "dataStructures.h"
 
 void freeCharMatrix(char** matrix, int x, int y) {
+	// this function frees all the allocated memory of the playerTable and hitMap (called separetly)
 	for (int i = 0; i < x; i++) {
 		free(matrix[i]);
 	}
@@ -13,6 +14,7 @@ void freeCharMatrix(char** matrix, int x, int y) {
 }
 
 void renderMap(char** map, int dim) {
+	// this functin prints any of the players two maps based on the playing fields length
 	if (dim > 10) {
 		for (int i = 0; i < dim; i++) {
 
@@ -89,6 +91,8 @@ void renderMap(char** map, int dim) {
 }
 
 void updateIncompleteMap(Player* player, int limit) {
+	// This function updates the players table to a point (limit) so it doesn't read any
+	// unallocated memory
 	for (int i = 0; i < limit; i++) {
 		for (int j = 0; j < player->ships[i].size; j++) {
 			int x = player->ships[i].occupiedFields[j].x;
@@ -105,6 +109,8 @@ void updateIncompleteMap(Player* player, int limit) {
 }
 
 void updatePlayerTable(Player* player) {
+	// This fucntion updates the player's table when all of the ships already allocated, as it
+	// goes through fully on player.ships array 
 	for (int i = 0; i < player->numberOfShips; i++) {
 		for (int j = 0; j < player->ships[i].size; j++) {
 			int x = player->ships[i].occupiedFields[j].x;
@@ -121,12 +127,16 @@ void updatePlayerTable(Player* player) {
 }
 
 void switchPlayers(Player* playerArray) {
+	// This function swithches the place of the two players, so the previously attacking player will become the target in
+	// the next round
 	Player temp = playerArray[0];
 	playerArray[0] = playerArray[1];
 	playerArray[1] = temp;
 }
 
 int isGameOver(Player* enemy) {
+	// this function checks if the targeted enemy has left any active ships
+	// if it has the function returns 0, else 0 
 	int i = 0;
 	while (i < enemy->numberOfShips && enemy->ships[i].state != 1) {
 		i++;

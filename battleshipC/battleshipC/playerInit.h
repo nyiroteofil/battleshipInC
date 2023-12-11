@@ -17,6 +17,8 @@ typedef struct Ship Ship;
 typedef struct Field Field;
 
 int isShipValid(int x, int y, int ori, int size, int dim) {
+	// this flunction chechs if the ship with the given parameters is within the playable area
+	// if it is than it returns 1, else 0 and prints error message
 	size -= 1;
 	if (ori == 2) {
 		if (y + size < dim && y > -1 && x < dim && x > -1) return 1;
@@ -31,6 +33,8 @@ int isShipValid(int x, int y, int ori, int size, int dim) {
 
 
 Field getShipsFields(int offset, int starterX, int starterY, int orientation) {
+	// this functin will generat on of the field that the ship with the given
+	// parameters will occupie, plus which part of the ship is this (offset from the first coordinate)
 	Field shipField;
 	if (orientation == 1) {
 		shipField.x = starterX - offset;
@@ -47,6 +51,8 @@ Field getShipsFields(int offset, int starterX, int starterY, int orientation) {
 }
 
 int willShipCollide(int x, int y, int size, int ori, Ship* ships) {
+	// we make a dummy ship to test if it will collide with any already existing
+	// ships if it does it returns 1, else 0
 	Field* shipsFields = (Field*)malloc(sizeof(Field) * size);
 
 	for (int i = 0; i < size; i++) {
@@ -76,9 +82,11 @@ int willShipCollide(int x, int y, int size, int ori, Ship* ships) {
 
 
 void getShips(int dim, Player* player) {
+	// allocating memory for the player's ships
 	player->ships = (Ship*)malloc(sizeof(Ship) * player->numberOfShips);
+	// cycle repeats as many times as the number of the player's ships
+	// than get the first coordinate of the ship and its orientation (horizontal or vertical) 
 	for (int i = 1; i <= player->numberOfShips; i++) {
-
 		system("cls");
 		int x, y, orientation;
 
@@ -121,14 +129,18 @@ void getShips(int dim, Player* player) {
 }
 
 void InitializePlayers(Player* player1, int dimension, int numberOfShips) {
+	// get a name for the player
 	system("cls");
 	printf("Player's Name: ");
 	scanf("%s", player1->name);
 	system("cls");
 
+	// set how many ships the player will have
 	player1->numberOfShips = numberOfShips;
 
-
+	// allocate memory and fill the tables for the player
+	// playerTable is storeing the visual representation of the players ships
+	// the hitMap table is storing the previos shots of the player
 	player1->playerTable = (char**)malloc(sizeof(char*) * dimension);
 	for (int i = 0; i < dimension; i++) {
 		player1->playerTable[i] = (char*)malloc(sizeof(char) * dimension);
