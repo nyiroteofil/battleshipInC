@@ -159,6 +159,11 @@ void InitializePlayers(Player* player1, int dimension, int numberOfShips) {
 	}
 
 	getShips(dimension, player1);
+	
+	printf("Please press [ENTER] to continue");
+	getchar();
+	system("cls");
+	Sleep(5000);
 }
 
 #endif
